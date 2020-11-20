@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6">
+   <h2><i class="fa fa-users"></i>
+       Task App
+   </h2>
+    </div>
+    <div class="col-md-6">
+   <h5 class="text-right text-secondary">
+       Total hours left : {{ this.totalOwed }}
+   </h5>
+    </div>
+</div>
+<table *ngIf = "clients?.length > 0 ; else noClients" class="table table-striped">
+<thead class="thead-inverse">
+    <tr>
+        <th>Task</th>
+        <th>Task Importance</th>
+        <th>Hours</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let client of clients">
+        <td>{{client.firstName}}</td>
+        <td>urgent</td>
+        <td>{{client.balance}}</td>
+        <td><a routerLink="client/{{ client.id}}" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i>Details</a></td>
+    </tr>
+</tbody>
+</table>
+<ng-template #noClients>
+ <hr>
+ <h2> No Tasks in database. Hurray!</h2>
+</ng-template>
